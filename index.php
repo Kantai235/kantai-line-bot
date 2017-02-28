@@ -28,15 +28,47 @@ foreach ($client->parseEvents() as $event) {
             $message = $event['message'];
             switch ($message['type']) {
                 case 'text':
+
+                    $request = $message['text'];
+
+                    switch ($message['text']) {
+                        case '幹我':
+                            $request = "我會幹ㄉ你不要不要的";
+                            break;
+                        
+                        case '虎爺我老婆':
+                            $request = "家有大貓只是個三次元生物沒有一個真實存在的。";
+                            break;
+
+                        case '機器狼可愛':
+                            $request = "機器狼只是軟體～～～";
+                            break;
+
+                        case '約ㄇ':
+                            $request = "幹你娘你每次都會在那邊約嗎然後約你又不來你他媽是三小啦";
+                            break;
+
+                        case '我只是想講約ㄇ':
+                            $request = "約屁喔操你媽你真的是他媽幹話王耶";
+                            break;
+
+                        default:
+                            $request = "聽不懂啦";
+                            break;
+                    }
+
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $message['text']
+                                'text' => $request
                             )
                         )
                     ));
+
+
+
                     break;
                 default:
                     error_log("Unsupporeted message type: " . $message['type']);
