@@ -53,7 +53,7 @@ foreach ($client->parseEvents() as $event) {
                             break;
 
                         default:
-                            $request = "聽不懂啦";
+                            $request = print_r($event);
                             break;
                     }
 
